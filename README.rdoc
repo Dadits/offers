@@ -1,3 +1,4 @@
 FYBER CHALLENGE APP
 {<img src="https://codeclimate.com/github/Dadits/offers/badges/gpa.svg" />}[https://codeclimate.com/github/Dadits/offers]
 {<img src="https://codeclimate.com/github/Dadits/offers/badges/coverage.svg" />}[https://codeclimate.com/github/Dadits/offers]
+{<img src="https://travis-ci.org/Dadits/offers.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/Dadits/offers]
