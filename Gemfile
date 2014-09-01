@@ -33,4 +33,5 @@ group :test do
   gem 'seed_dump',            '~> 3.2.0'
   gem 'poltergeist',          '~> 1.5.0'
   gem 'webmock',              '~> 1.18.0'
+  gem "codeclimate-test-reporter", require: nil
 end
