@@ -27,7 +27,8 @@ Spork.prefork do
     config.order = :random
 
     Kernel.srand config.seed
-
+    WebMock.disable_net_connect!(allow: "codeclimate.com")
+    
     config.expect_with :rspec do |expectations|
       expectations.syntax = :expect
     end
@@ -41,7 +42,6 @@ Spork.prefork do
     config.include FactoryGirl::Syntax::Methods
     config.include Capybara::DSL
     config.include ResponseMacros
-
   end
 end
 
