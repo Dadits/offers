@@ -1,0 +1,9 @@
+- if @offers.any?
+  - @offers.each do |offer|
+    .offer
+      .title= offer['title']
+      .payout= offer['payout']
+      .thumbnail= image_tag(offer['thumbnail']['lowres'])
+      
+- else
+  .no_offers No offers
