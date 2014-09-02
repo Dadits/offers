@@ -26,9 +26,16 @@ module ResponseMacros
     offers_example_data.merge!('message' => I18n.t(:invalid_hkey))
   end
 
+  def no_offers_example_data
+    offers_example_data.merge!(offers: [])
+  end
   
   def valid_header
-    { 'X-Sponsorpay-Response-Signature' => Digest::SHA1.hexdigest(offers_example_data.to_json + Rails.application.secrets.fyber_api_key)}
+    generate_header(offers_example_data)
+  end
+  
+  def empty_offers_header
+    generate_header(no_offers_example_data)
   end
   
   def valid_hash_key(request)
@@ -41,4 +48,10 @@ module ResponseMacros
     fill_in 'offers_request_page', with: @params[:page]
   end
   
+  private
+    
+    def generate_header(data)
+      { 'X-Sponsorpay-Response-Signature' => Digest::SHA1.hexdigest(data.to_json + Rails.application.secrets.fyber_api_key)}
+    end
+
 end

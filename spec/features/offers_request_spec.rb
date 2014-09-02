@@ -18,6 +18,14 @@ describe "offers request" do
     expect(page).to have_content I18n.t(:successful_request)
   end
   
+  it 'shows no offers' do
+    fake_request(request_data: @data, status: 200, headers: empty_offers_header, body: no_offers_example_data)
+    fill_in_form_with(@params)
+    click_on I18n.t(:get_offers)
+    expect(page).to have_content I18n.t(:no_offers)
+    expect(page).to have_content I18n.t(:successful_request)    
+  end
+  
   it 'errors invalid params' do
     fake_request(request_data: @data, status: 200, headers: valid_header, body: offers_example_data)
     click_on I18n.t(:get_offers)
