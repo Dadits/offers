@@ -44,7 +44,7 @@ class OffersRequest
         
     def response_invalid?(response, body)
       errors.add(:request, body['message']) unless response.code == 200
-      errors.add(:request, I18n.t(:invalid_response)) unless generate_key(response.body) == response.headers['X-Sponsorpay-Response-Signature']
+      errors.add(:response, I18n.t(:invalid_response)) unless generate_key(response.body) == response.headers['X-Sponsorpay-Response-Signature']
       errors.any?
     end
     

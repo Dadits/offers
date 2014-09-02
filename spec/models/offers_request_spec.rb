@@ -41,7 +41,8 @@ describe OffersRequest do
       it 'sets and returns errors if invalid data been sent' do
         fake_request(request_data: request.params.to_query, status: 401, headers: valid_header, body: offers_example_bad_data)
         expect(request.get_offers_data).to eq request.errors
-        expect(request.errors.messages[:request].sort).to eq [I18n.t(:invalid_response), I18n.t(:invalid_hkey)].sort
+        expect(request.errors.messages[:request].first).to eq I18n.t(:invalid_hkey)
+        expect(request.errors.messages[:response].first).to eq I18n.t(:invalid_response)
       end
       
     end

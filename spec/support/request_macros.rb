@@ -7,7 +7,8 @@ module ResponseMacros
            body: params[:body].to_json,
         headers: params[:headers],
          status: params[:status]
-      })
+      }
+    )
   end
   
   def offers_example_data
@@ -16,7 +17,8 @@ module ResponseMacros
         'title' => 'Tap Fish', 
         'thumbnail' => { 'lowres' => 'http://static3.businessinsider.com/image/51c3211b69bedd8843000023-480/black-hole.jpg' }, 
         'payout' => '90'
-      }]
+      }],
+      'message' => I18n.t(:successful_request)
     }
   end
 
@@ -31,6 +33,12 @@ module ResponseMacros
   
   def valid_hash_key(request)
     Digest::SHA1.hexdigest(request.params.except(:hashkey).to_query + "&#{ Rails.application.secrets.fyber_api_key }")
+  end
+  
+  def fill_in_form_with(params)
+    fill_in 'offers_request_uid', with: @params[:uid]
+    fill_in 'offers_request_pub0', with: @params[:pub0]
+    fill_in 'offers_request_page', with: @params[:page]
   end
   
 end

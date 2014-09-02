@@ -1,6 +1,7 @@
 = simple_form_for @request, url: requested_offers_path, html: { class: 'offers-request-form' } do |f|
   .form-group.has-error
     = f.error :request
+    = f.error :response
   = f.input :uid, placeholder: t(:enter_uid), label: false
   = f.input :pub0, placeholder: t(:enter_pub0), label: false
   = f.input :page, placeholder: t(:enter_page), as: :integer, label: false

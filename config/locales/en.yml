@@ -29,5 +29,6 @@ en:
   get_best_offers: Get the best offers ever!
   invalid_response: Response we've received didn't pass validation
   invalid_hkey: An invalid or missing hash key for this appid was given as a parameter in the request.
+  successful_request: Successful request
   processing: Processing...
   
